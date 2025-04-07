@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>MONETE VERE O FALSE?</h1>
+        <div id="modulo">
+            <form id="dati" name="dati">
+                <ul>
+                    <li><label>moneta #1 </label><input type="number" name="m1" id="m1"></li>
+                    <li><label>moneta #2 </label><input type="number" name="m2" id="m2"></li>
+                    <li><label>moneta #3 </label><input type="number" name="m3" id="m3"></li>
+                </ul>
+            </form>
+            <button onclick="verifica()">VERIFICA MONETE</button>
+        </div>
+        <div id="risultato" style="display: none;">
+
+        </div>
+        <script>
+            function verifica(){
+
+                m1 = document.getElementById("m1").value;
+                m2 = document.getElementById("m2").value;
+                m3 = document.getElementById("m3").value;
+                m_falsa = m1;
+                p1 = m1;
+                p2 = m2;
+                p3 = m3;
+                msg ="";
+                if(p1==p2) {
+                    if (p1==p3){
+                        msg= "non sono in grado di determinare la moneta falsa";
+                    }else{
+                        m_falsa = m3;
+                        msg = "La moneta falsa e` la 3("+m_falsa+")";
+                    }
+                }else {
+                    if(p2==p3){
+                        msg = "non sono in grado di determinare la moneta falsa";
+                    }else{
+                        m_falsa = m1;
+                        msg ="La moneta falsa e` la 1 ("+m_falsa+")";
+                    }
+                }
+                document.getElementById("modulo").style.display="none";
+                document.getElementById("risultato").innerHTML=msg+"<br>moneta1: "+m1+"<br>moneta2: "+m2+"<br>moneta3: "+m3;
+                document.getElementById("risultato").style.display="block";
+            }
+        </script>
+    </body>
+</html>
