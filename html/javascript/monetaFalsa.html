@@ -53,8 +53,13 @@
                     }
                 }
                 document.getElementById("modulo").style.display="none";
-                document.getElementById("risultato").innerHTML=msg+"<br>moneta1: "+m1+"<br>moneta2: "+m2+"<br>moneta3: "+m3;
+                document.getElementById("risultato").innerHTML=msg+"<br><button onclick='reset()''>reset</button>";
                 document.getElementById("risultato").style.display="block";
+            }
+
+            function reset(){
+                document.getElementById("modulo").style.display="block";
+                document.getElementById("risultato").style.display="none";
             }
         </script>
     </body>
