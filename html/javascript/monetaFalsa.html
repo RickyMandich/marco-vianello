@@ -41,10 +41,15 @@
                     }
                 }else {
                     if(p2==p3){
-                        msg = "non sono in grado di determinare la moneta falsa";
-                    }else{
                         m_falsa = m1;
                         msg ="La moneta falsa e` la 1 ("+m_falsa+")";
+                    }else{
+                        if(p1==p3){
+                            m_falsa = m2;
+                            msg = "La moneta falsa e` la 2 ("+m_falsa+")";
+                        }else{
+                            msg = "non sono in grado di determinare la moneta falsa";
+                        }
                     }
                 }
                 document.getElementById("modulo").style.display="none";
