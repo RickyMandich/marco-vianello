@@ -19,6 +19,7 @@
             <br>
             <button onclick="calcola()">Calcola Area</button>
         </div>
+        <div id="risultato" style="display: none;"></div>
     </body>
 </html>
 <script>
@@ -26,6 +27,20 @@
         let poligono = document.getElementById("poligono").value;
         let base = document.getElementById("base").value;
         let altezza = document.getElementById("altezza").value;
-        
+        let ret = "";
+        if(poligono == "triangolo"){
+            let area = (base * altezza) / 2;
+            ret = "L'area del triangolo è: " + area;
+        } else if(poligono == "rettangolo"){
+            let area = base * altezza;
+            ret = "L'area del rettangolo è: " + area;
+        } else if(poligono == "quadrato"){
+            let area = base * base;
+            ret = "L'area del quadrato è: " + area;
+        } else {
+            ret = "poligono non riconosciuto";
+        }
+        document.getElementById("risultato").innerHTML = ret;
+        document.getElementById("risultato").style.display = "block";
     }
 </script>
