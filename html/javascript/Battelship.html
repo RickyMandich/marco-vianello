@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .bs {
+        padding: 1%;
+        background-color: aqua;
+        border-radius: 10%;
+        border-style: solid;
+        border-color: blue; 
+        width: 4vw;
+        height: 8vh;       
+    }
+    #log {
+        position: absolute;
+        top: 4vh;
+        right: 4vw;
+        width:37vw;
+        min-height: 94vh;
+        display:inline-block;
+        text-align: center;
+        padding-top: 2vh;
+        background-color:blueviolet;
+    }
+
+</style>
+</head>
+<body onload="drawBoard()">
+    <h1>BATTLESHIP</h1>
+    <div id = "battleBoard">
+
+    </div>
+    <div id="log">
+
+    </div>
+    
+</body>
+<script>
+    function drawBoard(){
+        let content= "";
+        for (i=1; i<=100; i++){
+            content+= "<button class='bs' id='btn"+i+"' value='MISS' onclick='hit("+i+")'>?</button>";
+            if (i%10==0){
+                content+="<br>";
+            }
+        }
+        document.getElementById("battleBoard").innerHTML=content;
+        placeShip();
+    }
+
+    function hit (nr){
+        
+        let btn = "btn"+nr;
+        let btnPress = document.getElementById(btn);
+        let val = btnPress.value;
+        // alert ("hit position "+nr+" id bottone "+btn+" value: "+val);
+        document.getElementById("log").innerHTML+="hit position "+nr+" id bottone "+btn+" value: "+val+"<br>";
+        if (val=="MISS") {
+
+            btnPress.innerHTML="X";
+            btnPress.style.backgroundColor="blue";
+        } else {
+            btnPress.innerHTML="O";
+            btnPress.style.backgroundColor="gray";  
+        }
+    }
+
+
+        
+        
+    
+    function placeShip (){
+        placed = 0;
+        while (placed<10){
+            let nr = Math.floor(Math.random() * 100)+1;
+            let btn = "btn"+nr;
+            let btnChoose = document.getElementById(btn);
+            if (btnChoose.value=="MISS"){
+                btnChoose.value="SHIP";
+                placed++;
+            }
+        }
+        alert ("total ships placed: "+placed);
+    }
+
+    
+</script>
+</html>
